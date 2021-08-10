@@ -16,16 +16,16 @@ def main():
     argparser = argparse.ArgumentParser(add_help=True)
     argparser.description = 'Simple tagging for media files'
 
-    argparser.add_argument('FILE')
-    argparser.add_argument('-u', '--updates-base64', action='store', help='Base64 encoded JSON string of updates to apply')
+    argparser.add_argument('FILE', help='file to apply changes to')
     argparser.add_argument(
         '-v', '--version',
         action='version', version='{}-{}'.format(
             PACKAGE.project_name,
             PACKAGE.version
         ),
-        help='Show version number and exit.'
+        help='show version number and exit'
     )
+    argparser.add_argument('--updates-base64', action='store', metavar='STR', help='base64 encoded JSON string of updates to apply')
     args = argparser.parse_args()
     
     # Attempt to open the file.
